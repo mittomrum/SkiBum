@@ -63,18 +63,17 @@ jobs:
       - uses: webbertakken/unity-builder@v2
         with:
           targetPlatform: WebGL
-          projectPath: "./Unity/Ski Bum"
 
       - uses: actions/cache@v2
         id: build-cache
         with:
-          path: Builds/WebGL
+          path: build/WebGL
           key: build-cache-${{ hashFiles('**/webgl.template.js') }}
 
       - uses: actions/upload-artifact@v2
         with:
           name: build-WebGL
-          path: Builds/WebGL      
+          path: build/WebGL      
 
   Upload_dev_beta:
     needs: buildWebGL
@@ -90,13 +89,13 @@ jobs:
       - uses: actions/cache@v2
         id: build-cache
         with:
-          path: Builds/WebGL
+          path: build/WebGL
           key: build-cache-${{ hashFiles('**/webgl.template.js') }}
 
       - uses: KikimoraGames/itch-publish@v0.0.3
         with:
           butlerApiKey: ${{ secrets.ITCH_IO_API_KEY }}
-          gameData: ./Builds/${{ matrix.template }}
+          gameData: ./build/${{ matrix.template }}
           itchUsername: ${{ env.ITCH_USERNAME }}
           itchGameId: ${{ env.ITCH_GAME_ID }}
           buildChannel: ${{ matrix.channel }}
@@ -116,13 +115,13 @@ jobs:
       - uses: actions/cache@v2
         id: build-cache
         with:
-          path: Builds/WebGL
+          path: build/WebGL
           key: build-cache-${{ hashFiles('**/webgl.template.js') }}
 
       - uses: KikimoraGames/itch-publish@v0.0.3
         with:
           butlerApiKey: ${{ secrets.ITCH_IO_API_KEY }}
-          gameData: ./Builds/${{ matrix.template }}
+          gameData: ./build/${{ matrix.template }}
           itchUsername: ${{ env.ITCH_USERNAME }}
           itchGameId: ${{ env.ITCH_GAME_ID }}
           buildChannel: ${{ matrix.channel }}
