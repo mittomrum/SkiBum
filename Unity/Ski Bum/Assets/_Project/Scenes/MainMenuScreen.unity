@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5cd988d4956834cb1215099de5c5b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: 0
+  sceneToLoad: 1
   animationSpeed: 0.09
 --- !u!224 &698252752 stripped
 RectTransform:
